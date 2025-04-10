@@ -1,20 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 import './index.css'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-purple-600 mb-4">
-          Tailwind CSS is Working!
-        </h1>
-        <p className="text-gray-600">
-          If you can see this styled text, Tailwind CSS is properly configured.
-        </p>
+    <Router>
+      <div className="min-h-screen bg-gray-50">
+        <nav className="bg-white shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16">
+              <div className="flex items-center">
+                <Link to="/" className="text-xl font-bold text-purple-600">
+                  StartupHub
+                </Link>
+              </div>
+              <div className="flex items-center space-x-4">
+                <Link to="/signin" className="text-gray-600 hover:text-purple-600">
+                  Sign In
+                </Link>
+                <Link
+                  to="/signup"
+                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
